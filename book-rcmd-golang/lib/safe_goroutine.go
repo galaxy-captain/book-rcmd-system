@@ -2,6 +2,9 @@ package lib
 
 import "fmt"
 
+/**
+ * goroutine with recover the panic
+ */
 func Go(f func()) {
 	go func(f func()) {
 		defer func() {
