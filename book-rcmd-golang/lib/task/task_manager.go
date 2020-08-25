@@ -1,10 +1,14 @@
-package rcmd
+package task
 
 import (
 	"context"
 	"fmt"
 	"time"
 )
+
+func init() {
+
+}
 
 type Task func(exchange *DataExchange)
 
@@ -16,12 +20,13 @@ type DataExchange struct {
 type TaskManager struct {
 	ctx         context.Context
 	taskProcess chan string
+	CurrentNum  int
 }
 
-func (tm *TaskManager) init(ctx context.Context) {
+func (tm *TaskManager) Init(ctx context.Context) {
 	tm.ctx = ctx
-	tm.taskProcess = make(chan string, CurrentTaskNum)
-	for i := 0; i < CurrentTaskNum; i++ {
+	tm.taskProcess = make(chan string, tm.CurrentNum)
+	for i := 0; i < tm.CurrentNum; i++ {
 		tm.taskProcess <- fmt.Sprintf("task-%d", i+1)
 	}
 }

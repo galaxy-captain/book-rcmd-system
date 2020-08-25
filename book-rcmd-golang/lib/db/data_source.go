@@ -1,4 +1,4 @@
-package rcmd
+package db
 
 import "sync"
 
