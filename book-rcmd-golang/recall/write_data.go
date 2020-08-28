@@ -1,0 +1,5 @@
+package recall
+
+func WriteData() {
+
+}
